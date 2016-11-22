@@ -68,6 +68,43 @@ $app->group('/auth', function () {
     $this->get('/logout', 'App\Controllers\AuthController:logout');
 })->add(new Guest());
 
+// price
+$app->group('/price', function () {
+    $this->get('/pricing', 'App\Controllers\Front\PriceController:pricing');
+    $this->get('/game_pricing', 'App\Controllers\Front\PriceController:game_pricing');
+})->add(new Guest());
+
+// product
+$app->group('/product', function () {
+    $this->get('/features', 'App\Controllers\Front\ProductController:features');
+    $this->get('/datacenter', 'App\Controllers\Front\ProductController:datacenter');
+    $this->get('/panel', 'App\Controllers\Front\ProductController:panel');
+})->add(new Guest());
+
+// soft
+$app->group('/soft', function () {
+    $this->get('/client', 'App\Controllers\Front\SoftController:client');
+    $this->get('/speedtest', 'App\Controllers\Front\SoftController:speedtest');
+    $this->get('/status', 'App\Controllers\Front\SoftController:status');
+})->add(new Guest());
+
+// about
+$app->group('/about', function () {
+    $this->get('/about', 'App\Controllers\Front\AboutController:about');
+    $this->get('/contact', 'App\Controllers\Front\AboutController:contact');
+    $this->get('/coupons', 'App\Controllers\Front\AboutController:coupons');
+    $this->get('/aff', 'App\Controllers\Front\AboutController:aff');
+})->add(new Guest());
+
+// treacy
+$app->group('/treaty', function () {
+    $this->get('/privacy', 'App\Controllers\Front\TreatyController:privacy');
+    $this->get('/sla_full', 'App\Controllers\Front\TreatyController:sla_full');
+    $this->get('/sla', 'App\Controllers\Front\TreatyController:sla');
+    $this->get('/tos', 'App\Controllers\Front\TreatyController:tos');
+    $this->get('/use_policy', 'App\Controllers\Front\TreatyController:use_policy');
+})->add(new Guest());
+
 // Password
 $app->group('/password', function () {
     $this->get('/reset', 'App\Controllers\PasswordController:reset');
@@ -141,6 +178,9 @@ $app->group('/mu/v2', function () {
 $app->group('/res', function () {
     $this->get('/captcha/{id}', 'App\Controllers\ResController:captcha');
 });
+
+
+
 
 return $app;
 
